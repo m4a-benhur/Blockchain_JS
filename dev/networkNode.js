@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Blockchain = require('./blockchain');
 const uuid = require('uuid/v1');
 const port = process.argv[2];
+//const currentNodeUrl = process.argv[3];
 const rp = require('request-promise');
 
 const nodeAddress = uuid().split('-').join('');
@@ -241,10 +242,10 @@ app.get('/block/:blockHash', function(req, res) {
 // get transaction by transactionId
 app.get('/transaction/:transactionId', function(req, res) {
 	const transactionId = req.params.transactionId;
-	const trasactionData = mejic.getTransaction(transactionId);
+	const transactionData = mejic.getTransaction(transactionId);
 	res.json({
-		transaction: trasactionData.transaction,
-		block: trasactionData.block
+		transaction: transactionData.transaction,
+		block: transactionData.block
 	});
 });
 
